@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 //middleware
+//catches any requests and logs path and method used
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
