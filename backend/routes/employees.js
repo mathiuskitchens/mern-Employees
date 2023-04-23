@@ -1,4 +1,7 @@
 const express = require("express");
+//pulls in Workout model for use
+const Employee = require("../models/employeeModel.js");
+
 const router = express.Router();
 
 //middleware
@@ -21,9 +24,31 @@ router.get("/:id", (req, res) => {
 });
 
 //POST a new employee
-router.post("/", (req, res) => {
-  console.log("Add new employee");
-  res.json({ message: "Add new employee" });
+router.post("/", async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    jobTitle,
+    skills,
+    technologies,
+    tenure,
+    address,
+  } = req.body;
+
+  try {
+    const employee = await Employee.create({
+      firstName,
+      lastName,
+      jobTitle,
+      skills,
+      technologies,
+      tenure,
+      address,
+    });
+    res.status(200).json(employee);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
 //PATCH some info about an existing employee
