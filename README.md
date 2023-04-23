@@ -8,11 +8,11 @@ This is a full-stack MERN (MongoDB, Express, React, Node.js) application for man
 
 To install the application, follow these steps:
 
-1. Clone this repository to your local machine using `git clone https://github.com/your-username/employee-management-system.git`
+1. Clone this repository to your local machine using `git clone https://github.com/mathiuskitchens/mern-Employees.git`
 2. Navigate to the root directory of the application using `cd mern_Employees`
 3. Install the dependencies by running `npm install` in the root directory
 4. Navigate to the `backend` directory using `cd backend`
-5. Install the client dependencies by running `npm install` in the `client` directory
+5. Install the backend dependencies by running `npm install` in the `backend` directory
 
 ## Usage
 
