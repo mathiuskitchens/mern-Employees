@@ -1,7 +1,13 @@
 const express = require("express");
 //pulls in Workout model for use
 const Employee = require("../models/employeeModel.js");
-
+const {
+  createEmployee,
+  getAllEmployees,
+  getEmployee,
+  deleteEmployee,
+  updateEmployee,
+} = require("../controllers/employeeController.js");
 const router = express.Router();
 
 //middleware
@@ -12,55 +18,18 @@ router.use((req, res, next) => {
 });
 
 //GET all employees
-router.get("/", (req, res) => {
-  console.log("Request all employees");
-  res.json({ message: "Request all employees" });
-});
+router.get("/", getAllEmployees);
 
 //GET single employee using ":id" param
-router.get("/:id", (req, res) => {
-  console.log("Request single employee");
-  res.json({ message: "Request single employee" });
-});
+router.get("/:id", getEmployee);
 
 //POST a new employee
-router.post("/", async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    jobTitle,
-    skills,
-    technologies,
-    tenure,
-    address,
-  } = req.body;
-
-  try {
-    const employee = await Employee.create({
-      firstName,
-      lastName,
-      jobTitle,
-      skills,
-      technologies,
-      tenure,
-      address,
-    });
-    res.status(200).json(employee);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
+router.post("/", createEmployee);
 
 //PATCH some info about an existing employee
-router.patch("/:id", (req, res) => {
-  console.log("Update an employee");
-  res.json({ message: "Update an employee" });
-});
+router.patch("/:id", updateEmployee);
 
 //DELETE an employee
-router.delete("/:id", (req, res) => {
-  console.log("Delete an employee");
-  res.json({ message: "Delete an employee" });
-});
+router.delete("/:id", deleteEmployee);
 
 module.exports = router;
