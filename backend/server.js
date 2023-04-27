@@ -1,7 +1,7 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const employeeRoutes = require("./routes/employees");
-require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const employeeRoutes = require('./routes/employees');
+require('dotenv').config();
 const port = process.env.PORT || 3000;
 
 //express app
@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 
 //ROUTE handlers
 //respond to any request at /api/employees, using employeeRoutes
-app.use("/api/employees", employeeRoutes);
+app.use('/api/employees', employeeRoutes);
 
 //connect to Mongo Database using mongoose
 mongoose

@@ -1,5 +1,5 @@
-const Employee = require("../models/employeeModel.js");
-const mongoose = require("mongoose");
+const Employee = require('../models/employeeModel.js');
+const mongoose = require('mongoose');
 
 //get all employees
 const getAllEmployees = async (req, res) => {
@@ -14,13 +14,13 @@ const getEmployee = async (req, res) => {
   const { id } = req.params;
   //checks if id is valid type
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "invalid ID" });
+    return res.status(404).json({ error: 'invalid ID' });
   }
 
   const employee = await Employee.findById(id);
 
   if (!employee) {
-    return res.status(404).json({ error: "no such employee" });
+    return res.status(404).json({ error: 'no such employee' });
   }
 
   res.status(200).json(employee);
@@ -60,7 +60,7 @@ const updateEmployee = async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "invalid ID" });
+    return res.status(404).json({ error: 'invalid ID' });
   }
 
   const employee = await Employee.findOneAndUpdate(
@@ -71,7 +71,7 @@ const updateEmployee = async (req, res) => {
   );
 
   if (!employee) {
-    return res.status(400).json({ error: "no such employee" });
+    return res.status(400).json({ error: 'no such employee' });
   }
 
   res.status(200).json(employee);
@@ -82,13 +82,13 @@ const deleteEmployee = async (req, res) => {
   const { id } = req.params;
   //checks if id is valid type
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "invalid ID" });
+    return res.status(404).json({ error: 'invalid ID' });
   }
 
   const employee = await Employee.findOneAndDelete({ _id: id });
 
   if (!employee) {
-    return res.status(400).json({ error: "no such employee" });
+    return res.status(400).json({ error: 'no such employee' });
   }
 
   res.status(200).json(employee);

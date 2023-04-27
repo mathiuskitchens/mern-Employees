@@ -4,9 +4,11 @@
   "description": "backend for Employee mern",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "semistandard",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "lint": "eslint --ignore-path .eslintignore --ext .js, .",
+    "lint:fix": "eslint --ignore-path .eslintignore --ext .js, . --fix"
   },
   "author": "Matt Kitchens",
   "license": "ISC",
@@ -14,5 +16,9 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^7.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0",
+    "prettier": "2.8.3"
   }
 }
