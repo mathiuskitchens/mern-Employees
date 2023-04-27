@@ -12,16 +12,15 @@ To install the application, follow these steps:
 2. Navigate to the root directory of the application using `cd mern_Employees`
 3. Install the dependencies by running `npm install` in the root directory
 4. Navigate to the `backend` directory using `cd backend`
-5. Install the backend dependencies by running `npm install` in the `backend` directory
+5. Install the backend dev dependencies by running `npm install` in the `backend` directory
 
 ## Usage
 
 To use the application, follow these steps:
 
-1. Start the MongoDB server by running `mongod` in a terminal window
-2. Start the API server by running `npm start` in the root directory of the application
-3. Start the React app by running `npm start` in the `client` directory
-4. Open your web browser and navigate to `http://localhost:3000`
+1. Start the API server by running `npm run dev` in the `backend` directory of the application
+2. Start the React app by running `npm run start` in the `frontend` directory
+3. Open your web browser and navigate to `http://localhost:3000`
 
 ## Features
 
@@ -32,7 +31,7 @@ The application provides the following features:
 3. Delete employee record
 4. View list of all employee records
 5. Search employee records by name
-6. Sort employee records by name or date of birth
+6. Sort employee records by name or tenure
 
 ## API Endpoints
 
@@ -43,7 +42,7 @@ The back-end API provides the following endpoints:
 | `/api/employees` | GET | Get a list of all employees |
 | `/api/employees/:id` | GET | Get a single employee by ID |
 | `/api/employees` | POST | Create a new employee |
-| `/api/employees/:id` | PUT | Update an existing employee |
+| `/api/employees/:id` | PATCH | Update an existing employee |
 | `/api/employees/:id` | DELETE | Delete an employee |
 
 ## Technologies
@@ -54,8 +53,6 @@ The application uses the following technologies:
 - Express: A web application framework for Node.js used to build the back-end API
 - React: A JavaScript library used to build the front-end user interface
 - Node.js: A JavaScript runtime used to build the back-end API and serve the React app
-- Axios: A promise-based HTTP client used to communicate with the back-end API
-- Bootstrap: A CSS framework used to style the user interface
 
 ## License
 
