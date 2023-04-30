@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 // components
 import EmployeeDetails from "../components/EmployeeDetails"
+import EmployeeForm from '../components/EmployeeForm';
 
 const Home = () => {
   // initialize useState
@@ -26,8 +27,10 @@ const Home = () => {
         {employees &&
           employees.map((employee) => (
             <EmployeeDetails key={employee._id} employee={employee} />
+          
           ))}
       </div>
+      <EmployeeForm />
     </div>
   );
 };
