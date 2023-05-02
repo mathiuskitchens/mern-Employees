@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useEmployeesContext } from '../hooks/useEmployeesContext';
 
 const EmployeeForm = () => {
+  const { dispatch } = useEmployeesContext();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
@@ -43,6 +45,7 @@ const EmployeeForm = () => {
       setTenure('');
       setError(null);
       console.log('New Employee Added', json);
+      dispatch({ type: 'CREATE_EMPLOYEE', payload: json });
     }
   };
 

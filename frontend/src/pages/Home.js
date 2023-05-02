@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useEmployeesContext } from '../hooks/useEmployeesContext'
 
 // components
 import EmployeeDetails from "../components/EmployeeDetails"
 import EmployeeForm from '../components/EmployeeForm';
 
 const Home = () => {
-  // initialize useState
-  const [employees, setEmployees] = useState(null);
+  const {employees, dispatch} = useEmployeesContext()
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -14,7 +14,7 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setEmployees(json);
+        dispatch({type: 'SET_EMPLOYEES', payload: json})
       }
     };
 
