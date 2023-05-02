@@ -1,18 +1,18 @@
 const Employee = require('../models/employeeModel.js');
 const mongoose = require('mongoose');
 
-//get all employees
+// get all employees
 const getAllEmployees = async (req, res) => {
-  //createdAt -1 sorts in descending order
+  // createdAt -1 sorts in descending order
   const employees = await Employee.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(employees);
 };
 
-//get single employee
+// get single employee
 const getEmployee = async (req, res) => {
   const { id } = req.params;
-  //checks if id is valid type
+  // checks if id is valid type
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: 'invalid ID' });
   }
@@ -26,7 +26,7 @@ const getEmployee = async (req, res) => {
   res.status(200).json(employee);
 };
 
-//post or add new employee
+// post or add new employee
 const createEmployee = async (req, res) => {
   const {
     firstName,
@@ -38,7 +38,7 @@ const createEmployee = async (req, res) => {
     address,
   } = req.body;
 
-  //add document to DB
+  // add document to DB
   try {
     const employee = await Employee.create({
       firstName,
@@ -55,7 +55,7 @@ const createEmployee = async (req, res) => {
   }
 };
 
-//update an employee
+// update an employee
 const updateEmployee = async (req, res) => {
   const { id } = req.params;
 
@@ -77,10 +77,10 @@ const updateEmployee = async (req, res) => {
   res.status(200).json(employee);
 };
 
-//delete employee
+// delete employee
 const deleteEmployee = async (req, res) => {
   const { id } = req.params;
-  //checks if id is valid type
+  // checks if id is valid type
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: 'invalid ID' });
   }
