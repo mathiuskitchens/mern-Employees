@@ -3,6 +3,7 @@ import { useEmployeesContext } from '../hooks/useEmployeesContext';
 
 const EmployeeForm = () => {
   const { dispatch } = useEmployeesContext();
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
@@ -10,6 +11,7 @@ const EmployeeForm = () => {
   const [technologies, setTechnologies] = useState('');
   const [tenure, setTenure] = useState('');
   const [error, setError] = useState('');
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,9 +36,12 @@ const EmployeeForm = () => {
 
     if (!response.ok) {
       setError(json.error);
+      setEmptyFields(json.emptyFields);
+      console.log("Didn't work");
     }
 
     if (response.ok) {
+      setEmptyFields([]);
       setFirstName('');
       setLastName('');
       setJobTitle('');
@@ -58,6 +63,8 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setFirstName(e.target.value)}
         value={firstName}
+        // if firstName is not in emptyFields, use error class, otherwise no class
+        className={emptyFields.includes('firstName') ? 'error' : ''}
       />
 
       <label>Last Name</label>
@@ -65,6 +72,7 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setLastName(e.target.value)}
         value={lastName}
+        className={emptyFields.includes('lastName') ? 'error' : ''}
       />
 
       <label>Job Title</label>
@@ -72,6 +80,7 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setJobTitle(e.target.value)}
         value={jobTitle}
+        className={emptyFields.includes('jobTitle') ? 'error' : ''}
       />
 
       <label>Skills</label>

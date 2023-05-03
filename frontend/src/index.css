@@ -90,12 +90,15 @@ form button {
   background: var(--primary);
   border: 0;
   color: white;
-  padding: 8px 16px;
+  padding: 8px 14px;
   margin-top: 10px;
   font-family: 'Roboto';
   font-weight: 400;
   border-radius: 10px;
   cursor: pointer;
+}
+form button:hover {
+  transform: scale(1.05);
 }
 div.error {
   padding: 10px;
@@ -105,4 +108,11 @@ div.error {
   border-radius: 10px;
   margin: 20px 0;
   width: 75%;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+.employee-details span:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

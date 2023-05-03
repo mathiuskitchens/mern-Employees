@@ -38,6 +38,26 @@ const createEmployee = async (req, res) => {
     address,
   } = req.body;
 
+  console.log(req.body);
+
+  // check all input fields have been filled out, return error if not
+  let emptyFields = [];
+
+  if (!firstName) {
+    emptyFields.push('firstName');
+  }
+  if (!lastName) {
+    emptyFields.push('lastName');
+  }
+  if (!jobTitle) {
+    emptyFields.push('jobTitle');
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: 'Please fill out all required fields', emptyFields });
+  }
+
   // add document to DB
   try {
     const employee = await Employee.create({

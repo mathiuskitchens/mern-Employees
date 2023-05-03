@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { useEmployeesContext } from '../hooks/useEmployeesContext'
+import { useEmployeesContext } from '../hooks/useEmployeesContext';
 
 // components
-import EmployeeDetails from "../components/EmployeeDetails"
+import EmployeeDetails from '../components/EmployeeDetails';
 import EmployeeForm from '../components/EmployeeForm';
 
 const Home = () => {
-  const {employees, dispatch} = useEmployeesContext()
+  const { employees, dispatch } = useEmployeesContext();
 
   useEffect(() => {
     const fetchEmployees = async () => {
@@ -14,11 +14,12 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({type: 'SET_EMPLOYEES', payload: json})
+        dispatch({ type: 'SET_EMPLOYEES', payload: json });
       }
     };
 
     fetchEmployees();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -27,7 +28,6 @@ const Home = () => {
         {employees &&
           employees.map((employee) => (
             <EmployeeDetails key={employee._id} employee={employee} />
-          
           ))}
       </div>
       <EmployeeForm />
