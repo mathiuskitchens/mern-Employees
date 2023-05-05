@@ -13,7 +13,7 @@ app.use(express.json());
 
 //catches any requests and logs path and method used
 app.use((req, res, next) => {
-  console.log(req.path, req.method);
+  console.log(req.path, req.method, req.body);
   next();
 });
 
