@@ -17,8 +17,8 @@ const Home = () => {
         dispatch({ type: 'SET_EMPLOYEES', payload: json });
       }
     };
-
     fetchEmployees();
+
     // eslint-disable-next-line
   }, []);
 

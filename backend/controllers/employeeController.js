@@ -52,6 +52,15 @@ const createEmployee = async (req, res) => {
   if (!jobTitle) {
     emptyFields.push('jobTitle');
   }
+  if (!skills) {
+    emptyFields.push('skills');
+  }
+  if (!technologies) {
+    emptyFields.push('technologies');
+  }
+  if (!tenure) {
+    emptyFields.push('tenure');
+  }
   if (emptyFields.length > 0) {
     return res
       .status(400)
@@ -83,11 +92,41 @@ const updateEmployee = async (req, res) => {
     return res.status(404).json({ error: 'invalid ID' });
   }
 
+  /*   // check all Modal fields have been filled out, return error if not
+  let ModalEmptyFields = [];
+
+  if (!firstName) {
+    ModalEmptyFields.push('firstName');
+  }
+  if (!lastName) {
+    ModalEmptyFields.push('lastName');
+  }
+  if (!jobTitle) {
+    ModalEmptyFields.push('jobTitle');
+  }
+  if (!skills) {
+    ModalEmptyFields.push('skills');
+  }
+  if (!technologies) {
+    ModalEmptyFields.push('technologies');
+  }
+  if (!tenure) {
+    ModalEmptyFields.push('tenure');
+  }
+  if (ModalEmptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: 'Please fill out all required fields', ModalEmptyFields });
+  }
+ */
+
   const employee = await Employee.findOneAndUpdate(
     { _id: id },
     {
       ...req.body,
-    }
+    },
+    // returns new updated item instead of original
+    { new: true }
   );
 
   if (!employee) {

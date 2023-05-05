@@ -5,7 +5,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "prettier"
+    "prettier",
+    "plugin:react-hooks/recommended"
   ],
   "overrides": [],
   "parserOptions": {
