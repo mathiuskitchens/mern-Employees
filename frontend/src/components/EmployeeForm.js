@@ -88,6 +88,7 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setSkills(e.target.value.split(','))}
         value={skills}
+        className={emptyFields.includes('skills') ? 'error' : ''}
       />
 
       <label>Technologies</label>
@@ -95,6 +96,7 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setTechnologies(e.target.value.split(','))}
         value={technologies}
+        className={emptyFields.includes('technologies') ? 'error' : ''}
       />
 
       <label>Tenure</label>
@@ -102,6 +104,7 @@ const EmployeeForm = () => {
         type="text"
         onChange={(e) => setTenure(e.target.value)}
         value={tenure}
+        className={emptyFields.includes('tenure') ? 'error' : ''}
       />
 
       <button>Add Employee</button>
