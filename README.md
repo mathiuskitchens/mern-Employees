@@ -30,8 +30,6 @@ The application provides the following features:
 2. Edit existing employee record
 3. Delete employee record
 4. View list of all employee records
-5. Search employee records by name
-6. Sort employee records by name or tenure
 
 ## API Endpoints
 
