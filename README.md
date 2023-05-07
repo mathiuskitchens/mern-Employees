@@ -1,4 +1,7 @@
-![Website Image](images/Employee-Screenshot.jpg)
+<img
+     src="images/Employee-Screenshot.jpg"
+     style="width: 600px"
+     >
 
 # Employee Management System
 
