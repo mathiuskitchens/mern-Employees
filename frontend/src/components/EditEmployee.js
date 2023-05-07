@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useEmployeesContext } from '../hooks/useEmployeesContext';
 
-const EditEmployee = ({ employee, id }) => {
+const EditEmployee = ({ employee }) => {
   const { dispatch, employees } = useEmployeesContext();
 
   const [show, setShow] = useState(false);
@@ -11,15 +11,24 @@ const EditEmployee = ({ employee, id }) => {
   const handleClose = () => {
     // for testing, remove later
     console.log(employee);
+
     setShow(false);
+    setFirstName(employee.firstName);
+    setLastName(employee.lastName);
+    setJobTitle(employee.jobTitle);
+    setSkills(employee.skills);
+    setTechnologies(employee.technologies);
+    setTenure(employee.tenure);
+    setError(null);
+    setModalEmptyFields([]);
   };
   const handleShow = () => {
     setShow(true);
     // for testing, remove later
 
-    console.log(employees);
+    console.log(employee);
   };
-
+  // state holders
   const [firstName, setFirstName] = useState(employee.firstName);
   const [lastName, setLastName] = useState(employee.lastName);
   const [jobTitle, setJobTitle] = useState(employee.jobTitle);
@@ -29,6 +38,7 @@ const EditEmployee = ({ employee, id }) => {
   const [error, setError] = useState('');
   const [modalEmptyFields, setModalEmptyFields] = useState([]);
 
+  // save button click
   const handleSave = async (e) => {
     e.preventDefault();
 
@@ -75,7 +85,7 @@ const EditEmployee = ({ employee, id }) => {
       <span
         variant="primary"
         onClick={handleShow}
-        className="material-symbols-outlined"
+        className="material-symbols-outlined edit-button"
       >
         edit
       </span>
@@ -90,65 +100,65 @@ const EditEmployee = ({ employee, id }) => {
           <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form className="create" onSubmit={handleSave}>
+          <form className="modal-form edit" onSubmit={handleSave}>
             <label>First Name</label>
             <input
-              required
               type="text"
               defaultValue={firstName}
               onChange={(e) => {
                 setFirstName(e.target.value);
               }}
+              className={modalEmptyFields.includes('firstName') ? 'error' : ''}
             />
 
             <label>Last Name</label>
             <input
-              required
               type="text"
               value={lastName}
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
+              className={modalEmptyFields.includes('lastName') ? 'error' : ''}
             />
 
             <label>Job Title</label>
             <input
-              required
               type="text"
               value={jobTitle}
               onChange={(e) => {
                 setJobTitle(e.target.value);
               }}
+              className={modalEmptyFields.includes('jobTitle') ? 'error' : ''}
             />
 
             <label>Skills</label>
             <input
-              required
               type="text"
               value={skills}
-              onChange={(e) => {
-                setSkills(e.target.value);
-              }}
+              onChange={(e) => setSkills(e.target.value.split(','))}
+              className={modalEmptyFields.includes('skills') ? 'error' : ''}
             />
 
             <label>Technologies</label>
             <input
-              required
               type="text"
               value={technologies}
               onChange={(e) => {
-                setTechnologies(e.target.value);
+                setTechnologies(e.target.value.split(','));
               }}
+              className={
+                modalEmptyFields.includes('technologies') ? 'error' : ''
+              }
             />
 
             <label>Tenure</label>
             <input
-              required
               type="number"
               value={tenure}
               onChange={(e) => {
                 setTenure(e.target.value);
               }}
+              className={modalEmptyFields.includes('tenure') ? 'error' : ''}
             />
             {error && <div className="error">{error}</div>}
           </form>
@@ -157,7 +167,7 @@ const EditEmployee = ({ employee, id }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSave}>
+          <Button variant="primary" className="save-btn" onClick={handleSave}>
             Save
           </Button>
         </Modal.Footer>

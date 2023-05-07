@@ -39,6 +39,9 @@
   },
   "devDependencies": {
     "bootstrap": "^5.2.3",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-normalize": "^10.0.1",
+    "postcss-preset-env": "^8.3.2",
     "react-bootstrap": "^2.7.4"
   }
 }

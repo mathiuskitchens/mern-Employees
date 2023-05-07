@@ -21,25 +21,29 @@ const EmployeeDetails = ({ employee }) => {
 
   return (
     <div className="employee-details">
+      <span
+        className="material-symbols-outlined delete-button"
+        onClick={handleClick}
+      >
+        delete
+      </span>
       <h2>
         {employee.firstName} {employee.lastName}, {employee.jobTitle}
       </h2>
 
       <div>
-        <strong>Skills: </strong>
+        <strong>Skills</strong>
         <SkillSet employee={employee} />
-        <strong>Technologies: </strong>
+        <strong>Technologies</strong>
         <TechSet employee={employee} />
-
         <p>
           <strong>Tenure: </strong>
           {employee.tenure} years
         </p>
       </div>
-      <EditEmployee employee={employee} id={employee._id} />
-      <span className="material-symbols-outlined" onClick={handleClick}>
-        delete
-      </span>
+      <div>
+        <EditEmployee employee={employee} />
+      </div>
     </div>
   );
 };

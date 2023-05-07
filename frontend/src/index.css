@@ -2,37 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap');
 
 /* layout */
+
 :root {
-  --primary: #3595da;
+  --background: #ffffff;
+  --primary: #086fc2;
   --error: #e7195a;
 }
 
 .App {
-  background: linear-gradient(
-    116.83deg,
-    rgba(225, 179, 164, 0.62) 14.7%,
-    rgb(190, 247, 247) 99.54%
-  );
+  background-color: var(--background);
+}
+
+.page-title {
+  color: var(--primary);
+  background-color: white;
+  margin: 10px auto;
+  padding: 14px;
+  text-align: center;
+  width: 400px;
 }
 
 body {
-  background: #f1f1f1;
   margin: 0;
   font-family: 'Roboto';
 }
+html {
+  background-color: var(--background);
+}
 
 header {
-  background: #fff;
+  background: var(--background);
 }
 
-header .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 header a {
   color: #333;
   text-decoration: none;
@@ -47,15 +48,29 @@ header a {
 
 .home {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 100px;
+  grid-template-columns: 5fr 1fr;
+  gap: 80px;
+  background-color: var(--background);
 }
+
+.employees {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+}
+
 .employee-details {
   background: #fff;
   border-radius: 10px;
-  margin: 20px auto;
+  max-height: 600px;
   padding: 20px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  flex: 1 1 420px;
+  max-width: 450px;
+  min-width: 250px;
 }
 
 .employee-details h2 {
@@ -70,35 +85,74 @@ header a {
   color: var(--primary);
 }
 
+li {
+  list-style-type: none;
+  margin-left: -20px;
+}
+
+.delete-button {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+}
+
+.edit-button {
+  position: absolute;
+  bottom: 20px;
+  right: 50px;
+}
+
 /* new employee form */
+
+.create {
+  background: var(--primary);
+  color: #fff;
+  width: 320px;
+  padding: 20px;
+  border-radius: 10px;
+  height: 600px;
+  margin-top: 0px;
+  margin-left: -60px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+.create h3 {
+  color: rgb(255, 255, 255);
+}
 label,
 input {
   display: block;
 }
 
+label {
+  margin-left: 4px;
+}
+
 input {
   padding: 8px;
+  outline: none;
+  height: 36px;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 80%;
+  min-width: 250px;
   border: 1px solid white;
   border-radius: 10px;
   box-sizing: border-box;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 form button {
-  background: var(--primary);
+  background: #fff;
   border: 0;
-  color: white;
+  color: var(--primary);
   padding: 8px 14px;
-  margin-top: 10px;
+  margin-top: 22px;
   font-family: 'Roboto';
-  font-weight: 400;
+  font-weight: 700;
   border-radius: 10px;
   cursor: pointer;
+  border: solid 1px var(--primary);
 }
 form button:hover {
-  background: #248eda;
+  transform: scale(1.05);
 }
 div.error {
   padding: 10px;
@@ -107,15 +161,40 @@ div.error {
   color: var(--error);
   border-radius: 10px;
   margin: 20px 0;
-  width: 75%;
+  width: 80%;
 }
 input.error {
   border: 1px solid var(--error);
 }
-.employee-details span {
-  margin: 5px;
-}
+
 .employee-details span:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+/* Edit Employee Form */
+
+.edit {
+  background: var(--primary);
+  color: #fff;
+  width: 450px;
+  padding: 20px;
+  border-radius: 10px;
+  height: 500px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.edit label {
+  margin-left: 60px;
+}
+.edit input {
+  margin: 5px 0 5px 60px;
+}
+
+.save-btn {
+  background-color: var(--primary);
 }

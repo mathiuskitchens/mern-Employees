@@ -28,15 +28,8 @@ const getEmployee = async (req, res) => {
 
 // post or add new employee
 const createEmployee = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    jobTitle,
-    skills,
-    technologies,
-    tenure,
-    address,
-  } = req.body;
+  const { firstName, lastName, jobTitle, skills, technologies, tenure } =
+    req.body;
 
   console.log(req.body);
 
@@ -76,7 +69,6 @@ const createEmployee = async (req, res) => {
       skills,
       technologies,
       tenure,
-      address,
     });
     res.status(200).json(employee);
   } catch (error) {
@@ -87,12 +79,24 @@ const createEmployee = async (req, res) => {
 // update an employee
 const updateEmployee = async (req, res) => {
   const { id } = req.params;
+  const { firstName, lastName, jobTitle, skills, technologies, tenure } =
+    req.body;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: 'invalid ID' });
-  }
+  console.log(req.body);
 
-  /*   // check all Modal fields have been filled out, return error if not
+  // decalre function to check arrays for empty string
+  const hasEmptyArray = (arr) => {
+    let hasEmptyString = false;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === '') {
+        let hasEmptyArray = true;
+        return hasEmptyArray;
+      }
+    }
+  };
+
+  // check all Modal fields have been filled out, return error if not
   let ModalEmptyFields = [];
 
   if (!firstName) {
@@ -104,10 +108,10 @@ const updateEmployee = async (req, res) => {
   if (!jobTitle) {
     ModalEmptyFields.push('jobTitle');
   }
-  if (!skills) {
+  if (hasEmptyArray(skills)) {
     ModalEmptyFields.push('skills');
   }
-  if (!technologies) {
+  if (hasEmptyArray(technologies)) {
     ModalEmptyFields.push('technologies');
   }
   if (!tenure) {
@@ -118,7 +122,10 @@ const updateEmployee = async (req, res) => {
       .status(400)
       .json({ error: 'Please fill out all required fields', ModalEmptyFields });
   }
- */
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: 'invalid ID' });
+  }
 
   const employee = await Employee.findOneAndUpdate(
     { _id: id },
