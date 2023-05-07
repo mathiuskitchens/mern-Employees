@@ -1,6 +1,6 @@
 <img
      src="images/Employee-Screenshot.jpg"
-     style="width: 600px"
+     style="width: 800px"
      >
 
 # Employee Management System
