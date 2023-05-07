@@ -1,4 +1,4 @@
-
+![Website Image](images/Employee-Screenshot.jpg)
 
 # Employee Management System
 
