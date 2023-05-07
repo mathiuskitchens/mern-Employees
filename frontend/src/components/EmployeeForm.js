@@ -37,6 +37,7 @@ const EmployeeForm = () => {
     if (!response.ok) {
       setError(json.error);
       setEmptyFields(json.emptyFields);
+      console.log(emptyFields);
       console.log("Didn't work");
     }
 

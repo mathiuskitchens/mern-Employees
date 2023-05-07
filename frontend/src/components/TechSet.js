@@ -1,15 +1,13 @@
 const TechSet = ({ employee }) => {
-    const employeeTech = employee.technologies
+  const employeeTech = employee.technologies;
 
   return (
-      
-          <ul>
-              {employeeTech.map((tech, index) => (
+    <ul>
+      {employeeTech.map((tech, index) => (
         <li key={index}>{tech}</li>
       ))}
-          </ul>
-   
-  )
-}
+    </ul>
+  );
+};
 
-export default TechSet
+export default TechSet;
